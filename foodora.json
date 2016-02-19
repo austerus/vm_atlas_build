@@ -1,6 +1,6 @@
 {
     "push": {
-      "name": "austerus/first_build"
+      "name": "austerus/foodora"
     },
     "variables": {
         "atlas_username": "{{env `ATLAS_USERNAME`}}",
@@ -13,7 +13,7 @@
                 "scripts/base.sh",
                 "scripts/virtualbox.sh",
                 "scripts/vagrant.sh",
-                "scripts/dep.sh",
+                "scripts/foodora.sh",
                 "scripts/cleanup.sh",
                 "scripts/zerodisk.sh"
             ],
@@ -50,7 +50,11 @@
             "ssh_wait_timeout": "10000s",
             "shutdown_command": "echo '/sbin/halt -h -p' > shutdown.sh; echo 'vagrant'|sudo -S bash 'shutdown.sh'",
             "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
-            "virtualbox_version_file": ".vbox_version"
+            "virtualbox_version_file": ".vbox_version",
+            "vboxmanage": [
+                ["modifyvm", "{{.Name}}", "--memory", "1024"],
+                ["modifyvm", "{{.Name}}", "--cpus", "1"]
+            ]
         }
     ],
     "post-processors": [
@@ -65,7 +69,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "virtualbox",
-                "version": "1.3.9"
+                "version": "201602191"
             }
         }]
     ]

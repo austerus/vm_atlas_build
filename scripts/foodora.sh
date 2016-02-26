@@ -36,9 +36,9 @@ add-apt-repository -y 'deb-src http://nginx.org/packages/ubuntu trusty nginx'
 
 rm -f nginx_signing.key
 
-curl -O https://www.kernel.org/pub/software/scm/git/git-2.7.0.tar.gz
-tar xzf git-2.7.0.tar.gz
-cd git-2.7.0
+curl -O https://www.kernel.org/pub/software/scm/git/git-2.7.2.tar.gz
+tar xzf git-2.7.2.tar.gz
+cd git-2.7.2
 make configure
 ./configure --prefix=/usr
 make all > /dev/null
@@ -46,8 +46,8 @@ make install > /dev/null
 
 cd ~
 
-rm -rf git-2.7.0
-rm -rf git-2.7.0.tar.gz
+rm -rf git-2.7.2
+rm -rf git-2.7.2.tar.gz
 
 curl -O http://download.redis.io/releases/redis-3.0.7.tar.gz
 tar xzf redis-3.0.7.tar.gz
